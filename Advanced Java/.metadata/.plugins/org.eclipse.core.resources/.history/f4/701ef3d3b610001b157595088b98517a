@@ -1,0 +1,30 @@
+package book;
+
+import java.sql.PreparedStatement;
+
+public class Main {
+
+	public static void main(String[] args) {
+		persistBook(new Book(5044L, "H2G2", "Best IT Scifi Book", "12.5f", "GH4507", 1235));
+		Book book = findBook(5000L);
+		System.out.println("#" + book);
+	}
+
+	private static Book findBook(long l) {
+		String query = "INSERT INTO BOOK (ID, TITLE, DESCRIPTION, UNITCOST, ISBN, NBOFPAGE) VALUES (?, ?, ?, ?, ?, ?)";
+		try(PreparedStatement stmt = getConnection().prepareStatment(query)){
+			stmt.setLong( 2 , book.getId());
+			stmt.setString(2, book.getTitle());
+			
+		}
+		return null;
+	}
+
+	private static void persistBook(Book book) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

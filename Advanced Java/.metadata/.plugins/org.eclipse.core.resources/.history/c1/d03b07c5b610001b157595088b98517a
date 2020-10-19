@@ -1,0 +1,23 @@
+package book;
+
+public class Main {
+
+	public static void main(String[] args) {
+		persistBook(new Book(5044L, "H2G2", "Best IT Scifi Book", 12.5f, 401f, 1235d));
+		Book book = findBook(5000L);
+		System.out.println("#" + book);
+	}
+
+	private static Book findBook(long l) {
+		String query = "INSERT INTO BOOK (ID, TITLE, DESCRIPTION, UNITCOST, ISBN, NBOFPAGE) VALUES (?, ?, ?, ?, ?, ?)";
+		return null;
+	}
+
+	private static void persistBook(Book book) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

@@ -1,0 +1,20 @@
+package com;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GenericsDemo {
+
+	public static void main(String[] args) {
+
+		int value = 5;
+		
+		List<Integer> values = new ArrayList<Integer>();
+		values.add(7);
+		
+		
+		int i = Integer.parseInt(values.get(0).toString());
+		System.out.println(i);
+	}
+
+}

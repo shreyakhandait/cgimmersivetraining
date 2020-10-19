@@ -1,0 +1,76 @@
+package org.cap.apps.studentms.dao;
+
+import org.cap.apps.studentms.entities.Student;
+import org.cap.apps.studentms.exceptions.*;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import java.util.*;
+
+public class StudentDaoImpl implements IStudentDao {
+
+//	private EntityManager entityManager;
+//
+//	public StudentDaoImpl(EntityManager entityManager){
+//     this.entityManager=entityManager;
+//	}
+//
+//	@Override
+//	public Student save(Student student) {
+//		entityManager.persist(student);
+//		return student;
+//	}
+//
+//	@Override
+//	public Student findById(Integer id) {
+//		Student student = entityManager.find(Student.class,id);
+//		if(student==null){
+//			throw new StudentNotFoundException("student not found for id="+id);
+//		}
+//		return student;
+//	}
+//
+//	@Override
+//	public void deleteById(Integer id) {
+//		Student student=findById(id);
+//		entityManager.remove(student);
+//	}
+	
+private Map<Integer, Student> store = new HashMap<>();
+private int generateId;
+Integer generateId() {
+	++generateId;
+	return generateId;
+}
+
+@Override
+public Student save(Student student) {
+	Integer id = generateId();
+	student.setId(id);
+	store.put(id, student);
+}
+
+@Override
+public Student findById(Integer id) {
+	checkStudentExists(id);
+	Student student = store.get(id);
+	return student;
+}
+
+@Override
+public void deleteBy(Integer id) {
+	checkStudentExists(id);
+	store.remove(id);
+}
+
+public void checkStudentExists(Integer id) {
+	Student student = store.get(id);
+	if(student == null) {
+		throw new StudentNotFoundException("student not found in store for id = " + id);
+	}
+}
+
+
+
+
+}

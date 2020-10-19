@@ -1,0 +1,7 @@
+package com;
+
+public class NullPointerException {
+	public  NullPointerException(String string) {
+		super(string);
+}
+}

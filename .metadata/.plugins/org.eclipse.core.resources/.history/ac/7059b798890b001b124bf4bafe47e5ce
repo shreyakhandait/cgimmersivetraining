@@ -1,0 +1,15 @@
+package com;
+
+import java.util.List;
+
+public class GenericsDemo {
+
+	public static void main(String[] args) {
+		int value = 5;
+		
+		List<Interger> values = new ArrayList<Interger>();
+		values.add(7);
+		values.add("Navin");
+	}
+
+}

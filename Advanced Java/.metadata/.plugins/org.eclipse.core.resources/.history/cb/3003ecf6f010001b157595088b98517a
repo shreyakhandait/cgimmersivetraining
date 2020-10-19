@@ -1,0 +1,54 @@
+package book;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Main {
+
+	public static void main(String[] args) {
+		persistBook(new Book(5044L, "H2G2", "Best IT Scifi Book", "12.5f", "GH4507", 1235));
+		Book book = findBook(5000L);
+		System.out.println("#" + book);
+	}
+
+	private static Book findBook(long id) throws SQLException {
+			Book book = new Book(id);
+			String query = "INSERT INTO BOOK (ID, TITLE, DESCRIPTION, UNITCOST, ISBN, NBOFPAGE) VALUES (?, ?, ?, ?, ?, ?)";
+			
+			try(PreparedStatement stmt =  getConnection().prepareStatement(query)){
+			
+				stmt.setLong( 1 , id);
+				ResultSet rs = stmt.executeQuery();
+				
+				while(rs.next()) {
+					book.setTitle(rs.getString("TITLE"));
+					book.setDescription(rs.getString("DESCRIPTION"));
+					book.setUnitCost(rs.getString("UNITCOST"));
+					book.setIsbn(rs.getString("ISBN"));
+					book.setNbOfPage(rs.getInt("NBOFPAGE"));
+				}
+				
+		}
+		return book;
+	}
+	
+
+
+	private static void persistBook(Book book) {
+		String query = "INSERT INTO BOOK (ID, TITLE, DESCRIPTION, UNITCOST, ISBN, NBOFPAGE) VALUES (?, ?, ?, ?, ?, ?)";
+		try(PreparedStatement stmt = getConnection().prepareStatement(query)){
+			stmt.setLong( 1 , book.getId());
+			stmt.setString(2, book.getTitle());
+			stmt.setString(3, book.getDescription());
+			stmt.setString(4, book.getUnitCost());
+			stmt.setString(5, book.getIsbn());
+			stmt.setInt(6, book.getNbOfPage());
+			
+			stmt.executeUpdate();
+		
+	}
+	
+	
+	
+}

@@ -1,0 +1,8 @@
+package com.cg.book;
+
+public class Book {
+	public String Sample() {
+		return "sample";
+	}
+
+}

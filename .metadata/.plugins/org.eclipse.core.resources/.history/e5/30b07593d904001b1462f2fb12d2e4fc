@@ -1,0 +1,29 @@
+package com.account;
+
+public class CurrentAccount extends Account {
+	private double overdraft;
+
+	public CurrentAccount(long accNum2, double balance2, Person accHolder2) {
+		super(accNum2, balance2, accHolder2);
+		//System.out.println("In Current Account" + balance2);
+		//this.overdraft = overdraft;
+	}
+	
+	
+	@Override
+	public void withdraw(double amount) {
+		double balance  = getBalance();
+		balance = balance - amount;
+		setBalance(balance);
+	}
+	@Override
+	public void deposit(double amount) {
+		double balance = getBalance();
+		balance= balance+amount;
+		setBalance(balance);
+	}
+
+	
+	
+	
+}

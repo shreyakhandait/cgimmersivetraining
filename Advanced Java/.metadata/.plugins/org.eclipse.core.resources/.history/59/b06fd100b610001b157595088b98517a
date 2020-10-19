@@ -1,0 +1,10 @@
+package book;
+
+public class Main {
+
+	public static void main(String[] args) {
+		persistBook(new Book(5044L, "H2G2", "Best IT Scifi Book", 12.5f));
+		Book book = find(5000L);
+	}
+
+}

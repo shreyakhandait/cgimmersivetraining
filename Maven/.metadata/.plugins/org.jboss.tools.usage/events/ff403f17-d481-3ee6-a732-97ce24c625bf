@@ -1,0 +1,11 @@
+#Sun Oct 18 14:15:55 GMT+05:30 2020
+ct=jbt
+a=finishWizard
+c=0
+s=1
+d=1603010755675
+v=2.2.300
+vl=How many times the 'Finish' button pressed during the day
+cmp=usage
+cl=org.eclipse.wst.xml.ui.internal.wizards.NewXMLWizard
+l=Wizard class name
